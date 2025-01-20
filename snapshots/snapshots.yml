@@ -1,0 +1,26 @@
+
+snapshots:
+  - name: snapshot_int_scd2_users
+    relation: ref('stg_up_learn_db__users') 
+    config:
+      unique_key: user_id
+      strategy: check
+      check_cols: 
+        - school_id 
+        - school_year
+  
+  - name: snapshot_int_scd2_user_logins
+    relation: ref('stg_up_learn_db__users') 
+    config:
+      unique_key: user_id
+      strategy: check
+      check_cols: 
+        - last_logged_in_at_ltz
+  
+  - name: snapshot_int_scd2_schools
+    relation: ref('stg_up_learn_db__schools') 
+    config:
+      unique_key: school_id
+      strategy: check
+      check_cols: 
+        - enrolled_students_count

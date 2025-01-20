@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+    - name: up_learn_db
+      database: cryptic-ground-377409
+      schema: uplearn_datasets
+      tables:
+        - name: users
+        - name: licences
+        - name: subjects
+        - name: transactions
+        - name: trials
+        - name: schools
