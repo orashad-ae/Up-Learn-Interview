@@ -23,8 +23,9 @@ FROM {{ ref('dim_users') }}
 -- main queries 
 
 ,transformed AS (
-SELECT 
-    dim_users.user_scd_key
+SELECT
+    {{ dbt_utils.generate_surrogate_key(['int_scd2_user_logins.user_id', 'int_scd2_user_logins.last_logged_in_at_ltz']) }} AS login_key
+    ,dim_users.user_scd_key
     ,{{ dbt_utils.generate_surrogate_key(['int_scd2_user_logins.user_id']) }} AS user_key
     ,int_scd2_user_logins.last_logged_in_at_ltz
 
